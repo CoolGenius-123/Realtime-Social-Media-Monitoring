@@ -1,104 +1,89 @@
-# Real-Time Web Scraping for Sentiment Analysis of Any Brand Name using Multi Threading
+# Real-Time Web Scraping for Sentiment Analysis of Any Brand Name using Multi-Threading
 
-## Overview - Realtime Web Scrapping and Doing Sentiment Analysis and Any Brand Names or Anything and Alerting the Email User on Any Changes
+## Overview
 
-## Purpose - To Do Sentiment Analysis and No of Posts or Comments of Anything Brand Name or Anything Searched By User and Alert Any Changes according to it.
+This project performs real-time web scraping and sentiment analysis on any specified brand name or topic across various social media platforms. It utilizes multi-threading for parallel processing, Playwright for web automation, SQLite for data storage, Pandas for data manipulation, and Transformers for sentiment analysis using a pre-trained model.
+
+## Purpose
+
+The purpose of this project is to provide users with real-time sentiment analysis and the number of posts or comments related to any given brand name or topic. Users are alerted via email in case of any significant changes in sentiment.
 
 ## Prerequisites
 
-Programming Languages : Python
-
-Important Libaries Used : tranformers, playwright, sqlite3, pandas, smtlib and etc mentioned in Requirements.txt file
-
-Knowledge of Web Scraping is Required.
-Knowledge of Playwright is Needed.
+- **Programming Languages**: Python
+- **Libraries**: transformers, playwright, sqlite3, pandas, smtlib, etc. (refer to Requirements.txt)
+- **Web Scraping Knowledge**: Playwright
+- **Virtual Environment**: Optional
+- **Python Version**: 3.9+
 
 ## Setup
 
-Virtual Environment : Optional
-Needed : Python > 3.9+ of Higher.
+1. **Playwright Setup**
+    - Install Playwright: `pip install playwright && playwright install chromium`
+    - Browser Configuration: Use Chromium if possible
+    - Headless Mode: False
+    - Usage: Web automation for login to websites like Twitter, Facebook, or LinkedIn and site context scraping after login.
 
-## Implementation
+2. **Pandas Setup**
+    - Installation: `pip install pandas`
+    - Usage: Data manipulation, creating DataFrames, and sentiment analysis.
 
-1. Playwright Setup
+3. **SQLite Setup**
+    - Installation: Pre-built with Python
+    - Usage: Storing scraped data and sentiment analysis results.
 
-    Install Playwright : pip install playwright && playwright install chromium
-    Browser Configuration : used chromium if possible
-    Headless Mode : False
-    Used it For : Web Automation Like Login to Website Like Twitter, Facebook or LinkedIn and also for scraping site context after login (if needed).
+4. **Transformers Setup**
+    - Installation: `pip install transformers`
+    - Setup: `pipeline('sentiment analysis')`
+    - Usage: Implementing sentiment analysis on scraped text.
 
-2. Pandas Setup
+5. **Multi-Threaded Setup**
+    - Usage: Parallel processing of multiple threads for simultaneous web scraping.
 
-    Installation: pip install pandas
-    Used for : Data Manipulation and Creating DataFrame and also Sentiment Analysis.
+6. **Facebook Scraping Module**
+    - Prerequisites: Facebook login account
+    - Scraping: Extract live posts of the latest searched brands or names
+    - Storage: SQLite3 database
+    - API: No external API used
 
-3. SQLite Setup (Comes Prebuilt with Python)
+7. **Twitter Scraping Module**
+    - Prerequisites: Twitter login account
+    - Scraping: Extract live posts of the latest searched brands or names
+    - Storage: SQLite3 database
+    - API: No external API used
 
-    Install: (Optional) Try to install dbbrowser to see the changes in table.
-    Used for : Storing Scrapped Data, and also Sentiment Data.
+8. **Reddit Scraping Module**
+    - Prerequisites: No login required
+    - Scraping: Extract live posts of the latest searched brands or names
+    - Storage: SQLite3 database
+    - API: No external API used
 
-4. Transformers Setup 
+9. **Quora Scraping Module**
+    - Prerequisites: No login required
+    - Scraping: Extract live posts of the latest searched brands or names
+    - Storage: SQLite3 database
+    - API: No external API used
 
-    Installation : pip install transformers
-    Setup : pipeline('sentiment analysis')
-    Used for : Sentiment Analysis Implementation of Scrapped Text
+## How it Works
 
-5. Multi-Threading Setup
-    
-    Used for : Paralled Processing of multiples Threads of Web Scrapper Running at same time.
+1. Run `mainfile.py`, which imports all modules and runs four threads in parallel to scrape data from Reddit, Quora, Facebook, and Twitter.
 
+2. Enter the brand name or topic you want to search for.
 
+3. Provide the email address to receive sentiment analysis results.
 
-6. Facebook Scraping Module
+4. The process may take some time depending on the number of posts to be scraped.
 
-    Important : Need to Create Facebook Login Account
-    Scrapping : Extracting Live Posts of Latest Searched Brands or Names
-    Storing Data : SQlite3 database
-    API: Not used any kind of API
-    No of Post Can Scrapped: More than 10000+ (No limit)
+5. Data is stored in the `social_media.db` database and corresponding tables.
 
-7. Twitter Scraping Module
+6. After calculating the sentiment score, an email is sent detailing the positive and negative comments or posts.
 
-    Important : Need to Create Twitter Login Account
-    Scrapping : Extracting Live Posts of Latest Searched Brands or Names
-    Storing Data : SQlite3 database
-    API: Not used any kind of API
-    No of Post Can Scrapped: More than 10000+ (No limit)
+7. For text sentiment analysis, a machine learning model is used.
 
-8.  Reddit Scraping Module
+## Interface
 
-    Important : No Need to Create  Login Account or Anything
-    Scrapping : Extracting Live Posts of Latest Searched Brands or Names
-    Storing Data : SQlite3 database
-    API: Not used any kind of API
-    No of Post Can Scrapped: More than 10000+ (No limit)
+Command Line Interface (CLI) - Can be implemented in GUI or Web-based interfaces.
 
+## Additional Information
 
-8.  Quora Scraping Module
-
-    Important : No Need to Create  Login Account or Anything
-    Scrapping : Extracting Live Posts of Latest Searched Brands or Names
-    Storing Data : SQlite3 database
-    API: Not used any kind of API
-    No of Post Can Scrapped: More than 10000+ (No limit)
-
-
-## How it Works:
-    1. User Need to Run mainfile.py (which will import all modules and in that) which will run 4 threads running parallel to scrape data from reddit, quora, facebook, twitter.
-
-    2. User Need to Search for Any Kind of Brand Name or Anything he wants.
-
-    3. It will ask for email which you want to send the message after calculation of score.
-
-    4. It might Take some time depending on No Post You Want to Scrapped.
-
-    5. It will all store the data in social_media.db database and tables as well.
-
-    6. After calculating the score it will send you the email that how many positive and negative comments or post you got after analyszing.
-
-    7. For Text Sentiment Analysis it uses Machine Learning Model.
-
-Interface: Command Line Interface (But can be implemented in GUI based as well as Web Based.)
-
-
-Links to Playwright, SQLite3, Pandas, Transformers documentation
+- Sentiment Analysis Model: [Transformers documentation](https://huggingface.co/distilbert-base-uncased-finetuned-sst-2-english)
