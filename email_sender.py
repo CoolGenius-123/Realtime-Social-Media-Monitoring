@@ -6,8 +6,8 @@ def send_email(rows, email_receiver, search):
 
 
     # Define email sender and receiver
-    email_sender = 'infowebv786@gmail.com'
-    email_password = 'fpan znww riru glvl'
+    email_sender = ''
+    email_password = ''
 
     # Set the subject and body of the email
     subject = 'Sentiment Analysis Report For Your Brand'
