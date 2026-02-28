@@ -13,8 +13,8 @@ def facebook(search, stored, no_post):
         page = browser.new_page()
         page.goto(starting_url)
         page.wait_for_selector('input[name="email"]')
-        page.fill('input[name="email"]', 'kh708841@gmail.com')
-        page.fill('input[name="pass"]', 'C++program@123')
+        page.fill('input[name="email"]', '<your_email_address>')
+        page.fill('input[name="pass"]', '<your_email_password>')
         page.click('button[name="login"]')
         page.wait_for_load_state("networkidle")
         search = quote(search)
@@ -46,3 +46,4 @@ def facebook(search, stored, no_post):
 # end = time.time()
 
 # print(vale, len(vale))
+
